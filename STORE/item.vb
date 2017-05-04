@@ -71,7 +71,7 @@ Public Class item
                     sqlSearch = "SELECT  itemID as 'رقم المعرف' , itemName as 'اسم المادة' , count as 'العدد'  , description  as  'الوصف' ,receviedDate as  'تاريخ الاستلام',serialNumber as 'الرقم التسلسلي' FROM Items  WHERE serialNumber like  '" & TbSearch.Text & "%'"
 
                 Case 3
-                    sqlSearch = "SELECT  itemID as 'رقم المعرف' , itemName as 'اسم المادة' , count as 'العدد'  , description  as  'الوصف' ,receviedDate as  'تاريخ الاستلام',serialNumber as 'الرقم التسلسلي'  , status as 'الحالة' FROM Items  WHERE serialNumber like  '" & TbSearch.Text & "%'"
+                    sqlSearch = "SELECT  itemID as 'رقم المعرف' , itemName as 'اسم المادة' , count as 'العدد'  , description  as  'الوصف' ,receviedDate as  'تاريخ الاستلام',serialNumber as 'الرقم التسلسلي'  , status as 'الحالة' FROM Items  WHERE status like  '" & TbSearch.Text & "%'"
 
 
                 Case Else
