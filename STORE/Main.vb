@@ -14,12 +14,4 @@
         protection.Show()
     End Sub
 
-    Private Sub movEm_Click(sender As Object, e As EventArgs) Handles movEm.Click
-
-        movEmp.MdiParent = Me
-        movEmp.Show()
-
-
-
-    End Sub
 End Class

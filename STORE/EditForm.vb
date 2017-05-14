@@ -8,13 +8,13 @@ Public Class EditForm
     Private Sub AddBtn_Click(sender As Object, e As EventArgs) Handles AddBtn.Click
 
         Try
-            Dim strInsert As String = "INSERT INTO Items(itemID , itemName , count , receviedDate , serialNumber , description )" _
-                                  & " VALUES ('" & txtID.Text & "','" & txtName.Text & "','" & txtNumber.Text & "','" & rdate.Value.ToString("yyyy-MM-dd") & "','" & txtSerial.Text & "','" & txtDec.Text & "')"
+            Dim strInsert As String = "INSERT INTO Items(itemID , itemName , count , receviedDate , serialNumber , description  , status )" _
+                                  & " VALUES ('" & txtID.Text & "','" & txtName.Text & "','" & txtNumber.Text & "','" & rdate.Value.ToString("yyyy-MM-dd") & "','" & txtSerial.Text & "','" & txtDec.Text & "','" & txtStatus.Text & "')"
 
 
             Dim cmd As New SqlCommand(strInsert, con)
             con.Open()
-            'delete , add , update 
+            ' delete , add , update 
             cmd.ExecuteNonQuery()
 
 

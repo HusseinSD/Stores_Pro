@@ -23,14 +23,17 @@ Partial Class item
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.EditBtn = New System.Windows.Forms.Button()
+        Me.num_tb = New System.Windows.Forms.TextBox()
+        Me.AddBtn = New System.Windows.Forms.Button()
+        Me.trans_btn = New System.Windows.Forms.Button()
+        Me.DeleteBtn = New System.Windows.Forms.Button()
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
         Me.CbFilter = New System.Windows.Forms.ComboBox()
         Me.TbSearch = New System.Windows.Forms.TextBox()
-        Me.DGV = New System.Windows.Forms.DataGridView()
-        Me.EditBtn = New System.Windows.Forms.Button()
-        Me.AddBtn = New System.Windows.Forms.Button()
-        Me.DeleteBtn = New System.Windows.Forms.Button()
         Me.SearchBtn = New System.Windows.Forms.Button()
+        Me.DGV = New System.Windows.Forms.DataGridView()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -51,8 +54,11 @@ Partial Class item
         'SplitContainer1.Panel1
         '
         Me.SplitContainer1.Panel1.BackColor = System.Drawing.Color.DarkSeaGreen
+        Me.SplitContainer1.Panel1.Controls.Add(Me.Label1)
         Me.SplitContainer1.Panel1.Controls.Add(Me.EditBtn)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.num_tb)
         Me.SplitContainer1.Panel1.Controls.Add(Me.AddBtn)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.trans_btn)
         Me.SplitContainer1.Panel1.Controls.Add(Me.DeleteBtn)
         '
         'SplitContainer1.Panel2
@@ -61,6 +67,69 @@ Partial Class item
         Me.SplitContainer1.Size = New System.Drawing.Size(719, 523)
         Me.SplitContainer1.SplitterDistance = 97
         Me.SplitContainer1.TabIndex = 0
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(50, 292)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(37, 13)
+        Me.Label1.TabIndex = 9
+        Me.Label1.Text = ": العدد"
+        '
+        'EditBtn
+        '
+        Me.EditBtn.BackgroundImage = Global.STORE.My.Resources.Resources._1_512
+        Me.EditBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.EditBtn.FlatAppearance.BorderSize = 0
+        Me.EditBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.EditBtn.Location = New System.Drawing.Point(12, 161)
+        Me.EditBtn.Name = "EditBtn"
+        Me.EditBtn.Size = New System.Drawing.Size(75, 77)
+        Me.EditBtn.TabIndex = 1
+        Me.EditBtn.UseVisualStyleBackColor = True
+        '
+        'num_tb
+        '
+        Me.num_tb.Location = New System.Drawing.Point(6, 289)
+        Me.num_tb.Name = "num_tb"
+        Me.num_tb.Size = New System.Drawing.Size(43, 20)
+        Me.num_tb.TabIndex = 8
+        '
+        'AddBtn
+        '
+        Me.AddBtn.BackColor = System.Drawing.Color.DarkSeaGreen
+        Me.AddBtn.BackgroundImage = Global.STORE.My.Resources.Resources.sign_add_icon
+        Me.AddBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.AddBtn.FlatAppearance.BorderSize = 0
+        Me.AddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.AddBtn.ForeColor = System.Drawing.Color.WhiteSmoke
+        Me.AddBtn.Location = New System.Drawing.Point(12, 18)
+        Me.AddBtn.Name = "AddBtn"
+        Me.AddBtn.Size = New System.Drawing.Size(75, 68)
+        Me.AddBtn.TabIndex = 10
+        Me.AddBtn.UseVisualStyleBackColor = False
+        '
+        'trans_btn
+        '
+        Me.trans_btn.Location = New System.Drawing.Point(6, 260)
+        Me.trans_btn.Name = "trans_btn"
+        Me.trans_btn.Size = New System.Drawing.Size(81, 23)
+        Me.trans_btn.TabIndex = 1
+        Me.trans_btn.Text = "استلام  "
+        Me.trans_btn.UseVisualStyleBackColor = True
+        '
+        'DeleteBtn
+        '
+        Me.DeleteBtn.BackgroundImage = Global.STORE.My.Resources.Resources.mActionDeleteSelected
+        Me.DeleteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.DeleteBtn.FlatAppearance.BorderSize = 0
+        Me.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.DeleteBtn.Location = New System.Drawing.Point(12, 92)
+        Me.DeleteBtn.Name = "DeleteBtn"
+        Me.DeleteBtn.Size = New System.Drawing.Size(75, 63)
+        Me.DeleteBtn.TabIndex = 11
+        Me.DeleteBtn.UseVisualStyleBackColor = True
         '
         'SplitContainer2
         '
@@ -91,8 +160,10 @@ Partial Class item
         Me.CbFilter.Items.AddRange(New Object() {"المعرف ", "الاسم ", "الرقم التسلسلي ", "الحالة"})
         Me.CbFilter.Location = New System.Drawing.Point(341, 15)
         Me.CbFilter.Name = "CbFilter"
+        Me.CbFilter.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.CbFilter.Size = New System.Drawing.Size(113, 21)
         Me.CbFilter.TabIndex = 7
+        Me.CbFilter.Text = "اخثر نوع البحث"
         '
         'TbSearch
         '
@@ -101,57 +172,8 @@ Partial Class item
         Me.TbSearch.Name = "TbSearch"
         Me.TbSearch.Size = New System.Drawing.Size(166, 20)
         Me.TbSearch.TabIndex = 5
-        '
-        'DGV
-        '
-        Me.DGV.AllowUserToOrderColumns = True
-        Me.DGV.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DGV.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
-        Me.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DGV.Location = New System.Drawing.Point(57, 3)
-        Me.DGV.Name = "DGV"
-        Me.DGV.Size = New System.Drawing.Size(610, 359)
-        Me.DGV.TabIndex = 10
-        '
-        'EditBtn
-        '
-        Me.EditBtn.BackgroundImage = Global.STORE.My.Resources.Resources._1_512
-        Me.EditBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.EditBtn.FlatAppearance.BorderSize = 0
-        Me.EditBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.EditBtn.Location = New System.Drawing.Point(12, 161)
-        Me.EditBtn.Name = "EditBtn"
-        Me.EditBtn.Size = New System.Drawing.Size(75, 77)
-        Me.EditBtn.TabIndex = 1
-        Me.EditBtn.UseVisualStyleBackColor = True
-        '
-        'AddBtn
-        '
-        Me.AddBtn.BackColor = System.Drawing.Color.DarkSeaGreen
-        Me.AddBtn.BackgroundImage = Global.STORE.My.Resources.Resources.sign_add_icon
-        Me.AddBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.AddBtn.FlatAppearance.BorderSize = 0
-        Me.AddBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.AddBtn.ForeColor = System.Drawing.Color.WhiteSmoke
-        Me.AddBtn.Location = New System.Drawing.Point(12, 18)
-        Me.AddBtn.Name = "AddBtn"
-        Me.AddBtn.Size = New System.Drawing.Size(75, 68)
-        Me.AddBtn.TabIndex = 10
-        Me.AddBtn.UseVisualStyleBackColor = False
-        '
-        'DeleteBtn
-        '
-        Me.DeleteBtn.BackgroundImage = Global.STORE.My.Resources.Resources.mActionDeleteSelected
-        Me.DeleteBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.DeleteBtn.FlatAppearance.BorderSize = 0
-        Me.DeleteBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.DeleteBtn.Location = New System.Drawing.Point(12, 92)
-        Me.DeleteBtn.Name = "DeleteBtn"
-        Me.DeleteBtn.Size = New System.Drawing.Size(75, 63)
-        Me.DeleteBtn.TabIndex = 11
-        Me.DeleteBtn.UseVisualStyleBackColor = True
+        Me.TbSearch.Text = "ابحث"
+        Me.TbSearch.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'SearchBtn
         '
@@ -168,6 +190,19 @@ Partial Class item
         Me.SearchBtn.TabIndex = 6
         Me.SearchBtn.UseVisualStyleBackColor = False
         '
+        'DGV
+        '
+        Me.DGV.AllowUserToOrderColumns = True
+        Me.DGV.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.DGV.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.DGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DGV.Location = New System.Drawing.Point(57, 3)
+        Me.DGV.Name = "DGV"
+        Me.DGV.Size = New System.Drawing.Size(610, 359)
+        Me.DGV.TabIndex = 10
+        '
         'item
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -179,6 +214,7 @@ Partial Class item
         Me.Name = "item"
         Me.Text = "item"
         Me.SplitContainer1.Panel1.ResumeLayout(False)
+        Me.SplitContainer1.Panel1.PerformLayout()
         Me.SplitContainer1.Panel2.ResumeLayout(False)
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.SplitContainer1.ResumeLayout(False)
@@ -201,4 +237,7 @@ Partial Class item
     Friend WithEvents SearchBtn As Button
     Friend WithEvents DGV As DataGridView
     Friend WithEvents EditBtn As Button
+    Friend WithEvents trans_btn As Button
+    Friend WithEvents Label1 As Label
+    Friend WithEvents num_tb As TextBox
 End Class

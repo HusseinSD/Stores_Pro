@@ -22,6 +22,8 @@ Public Class item
     End Function
 
 
+
+
     Public Sub Refresh()
         ds = New DataSet()
         Dim connectionString As String = "Data Source=DESKTOP-1I7TNPF\MSSQLSERVER1;Initial Catalog=Stores;Integrated Security=True"
@@ -35,6 +37,14 @@ Public Class item
         DGV.DataMember = "Items"
 
     End Sub
+
+
+
+    Public Function GetCurrentNum() As String
+        currentRow = DGV.CurrentCell.RowIndex
+        Return DGV.Rows(currentRow).Cells(3).Value
+    End Function
+
 
     Private Sub item_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Refresh()
@@ -123,8 +133,7 @@ Public Class item
             dr.Read()
             If dr.HasRows Then
                 If MsgBox("Are you  sure ? ", vbOKCancel, "التأكيد") = MsgBoxResult.Ok Then
-
-                    'Delete
+                    'Delete selected row 
                     Dim strDelete As String = "DELETE FROM items WHERE itemID = '" & DGV.Rows(currentRow).Cells(0).Value & "'"
 
                     cmd = New SqlCommand(strDelete, con)
@@ -156,6 +165,72 @@ Public Class item
         Edit.Show()
     End Sub
 
+    Private Sub trans_btn_Click(sender As Object, e As EventArgs) Handles trans_btn.Click
+
+
+
+        Dim connectionString As String = "Data Source=DESKTOP-1I7TNPF\MSSQLSERVER1;Initial Catalog=Stores;Integrated Security=True"
+        con = New SqlConnection(connectionString)
+        Dim R
+
+        Try
+            'return cout from item 
+            Dim sqlcmd As New SqlCommand("SELECT Items_1.count  
+                                       FROM   dbo.Receipt INNER JOIN    
+                                        dbo.Items AS Items_1 ON   " & GetCurrentID() & " = Items_1.itemID ", con)
+            con.Open()
+
+            Dim reader As SqlDataReader = sqlcmd.ExecuteReader
+
+            While reader.Read
+                R = Val(reader("count").ToString)
+            End While
+
+            reader.Close()
+
+
+
+
+            Dim number As Integer = Val(num_tb.Text)
+            'delivery count 
+            Dim s = Val(GetCurrentNum())
+
+            If MsgBox("return:  " + CStr(number) + " to stores     ", MsgBoxStyle.OkCancel) = MsgBoxResult.Ok Then
+
+
+                s = s - number
+                R = R + number
+
+
+
+
+                Dim Item As String = "UPDATE Items  SET items.count =  " & CStr(s) & "  WHERE  itemID  =   " & GetCurrentID() & ";"
+
+
+                Dim Rec As String = "UPDATE Receipt  SET Receipt.count =  " & CStr(R) & "  WHERE  itemID = " & GetCurrentID() & ";"
+
+
+
+                Dim exItem As New SqlCommand(Item, con)
+                exItem.ExecuteNonQuery()
+
+                Dim exRec As New SqlCommand(Rec, con)
+                exRec.ExecuteNonQuery()
+
+
+            End If
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        Finally
+            con.Close()
+
+        End Try
+
+
+    End Sub
 End Class
 
 

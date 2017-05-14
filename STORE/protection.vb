@@ -11,6 +11,28 @@ Public Class protection
     Dim dt As DataTable
     Dim x
     Dim sqlSearch As String
+    Dim currentRow
+
+
+
+
+    Public Function GetCurrentNum() As String
+        currentRow = proDGV.CurrentCell.RowIndex
+        Return proDGV.Rows(currentRow).Cells(3).Value
+    End Function
+
+
+
+
+    Public Function GetCurrentID() As String
+        currentRow = proDGV.CurrentCell.RowIndex
+        Return proDGV.Rows(currentRow).Cells(0).Value
+    End Function
+
+    Private Sub DGV_CellClick(sender As Object, e As DataGridViewCellEventArgs)
+        currentRow = proDGV.CurrentCell.RowIndex
+    End Sub
+
 
     Public Function RefereshPro()
 
@@ -87,6 +109,77 @@ Public Class protection
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
+    End Sub
+
+    Private Sub Retn_Btn_Click(sender As Object, e As EventArgs) Handles Retn_Btn.Click
+
+
+        Dim connectionString As String = "Data Source=DESKTOP-1I7TNPF\MSSQLSERVER1;Initial Catalog=Stores;Integrated Security=True"
+        con = New SqlConnection(connectionString)
+
+        Dim s
+
+        Try
+            'return cout from item 
+            Dim sqlcmd As New SqlCommand("SELECT Items_1.count  
+                                       FROM   dbo.delivery INNER JOIN    
+                                        dbo.Items AS Items_1 ON   " & GetCurrentID() & " = Items_1.itemID ", con)
+            con.Open()
+
+            Dim reader As SqlDataReader = sqlcmd.ExecuteReader
+
+            While reader.Read
+                s = Val(reader("count").ToString)
+            End While
+
+            reader.Close()
+
+
+
+
+            Dim number As Integer = Val(num_tb.Text)
+            'delivery count 
+            Dim d = Val(GetCurrentNum())
+
+
+            If MsgBox("return:  " + CStr(number) + " to stores     ", MsgBoxStyle.OkCancel) = MsgBoxResult.Ok Then
+
+
+                d = d - number
+                s = s + number
+
+
+
+
+                Dim del As String = "UPDATE delivery  SET delivery.count =  " & CStr(d) & "  WHERE  itemID  =   " & GetCurrentID() & ";"
+
+
+                Dim item As String = "UPDATE Items  SET Items.count =  " & CStr(s) & "  WHERE  itemID = " & GetCurrentID() & ";"
+
+
+
+                Dim exDel As New SqlCommand(del, con)
+                exDel.ExecuteNonQuery()
+
+                Dim exItem As New SqlCommand(item, con)
+                exItem.ExecuteNonQuery()
+
+
+            End If
+
+
+        Catch ex As Exception
+            MsgBox(ex.Message)
+
+        Finally
+            con.Close()
+
+        End Try
+
+
+
+
 
     End Sub
 End Class
