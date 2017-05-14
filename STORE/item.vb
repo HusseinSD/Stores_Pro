@@ -16,11 +16,6 @@ Public Class item
 
 
 
-    Public Function GetCurrentID() As String
-        currentRow = DGV.CurrentCell.RowIndex
-        Return DGV.Rows(currentRow).Cells(0).Value
-    End Function
-
 
 
 
@@ -40,15 +35,20 @@ Public Class item
 
 
 
+    Private Sub item_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Refresh()
+    End Sub
+
     Public Function GetCurrentNum() As String
         currentRow = DGV.CurrentCell.RowIndex
         Return DGV.Rows(currentRow).Cells(3).Value
     End Function
 
+    Public Function GetCurrentID() As String
+        currentRow = DGV.CurrentCell.RowIndex
+        Return DGV.Rows(currentRow).Cells(0).Value
+    End Function
 
-    Private Sub item_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Refresh()
-    End Sub
 
 
 
@@ -167,23 +167,35 @@ Public Class item
 
     Private Sub trans_btn_Click(sender As Object, e As EventArgs) Handles trans_btn.Click
 
-
+        Dim R
+        Dim s
 
         Dim connectionString As String = "Data Source=DESKTOP-1I7TNPF\MSSQLSERVER1;Initial Catalog=Stores;Integrated Security=True"
         con = New SqlConnection(connectionString)
-        Dim R
 
         Try
-            'return cout from item 
+            ' Return cout from item 
             Dim sqlcmd As New SqlCommand("SELECT Items_1.count  
                                        FROM   dbo.Receipt INNER JOIN    
                                         dbo.Items AS Items_1 ON   " & GetCurrentID() & " = Items_1.itemID ", con)
-            con.Open()
 
+
+            Dim sqlcmd1 As New SqlCommand("SELECT Receipt.count  
+                                       FROM   dbo.Receipt INNER JOIN    
+                                        dbo.Items AS Items_1 ON   Receipt.itemID = " & GetCurrentID() & " ", con)
+
+
+
+
+
+
+            con.Open()
             Dim reader As SqlDataReader = sqlcmd.ExecuteReader
 
+
+
             While reader.Read
-                R = Val(reader("count").ToString)
+                s = Val(reader("count").ToString)
             End While
 
             reader.Close()
@@ -191,11 +203,30 @@ Public Class item
 
 
 
+            Dim reader1 As SqlDataReader = sqlcmd1.ExecuteReader
+
+            While reader1.Read
+                R = Val(reader1("count").ToString)
+            End While
+
+            reader1.Close()
+
+
+
+
+
+
+
+
+
+
+
             Dim number As Integer = Val(num_tb.Text)
             'delivery count 
-            Dim s = Val(GetCurrentNum())
+            ' Dim s = Val(GetCurrentNum())
 
-            If MsgBox("return:  " + CStr(number) + " to stores     ", MsgBoxStyle.OkCancel) = MsgBoxResult.Ok Then
+            MsgBox(GetCurrentNum())
+            If MsgBox("Receipt   " + CStr(number) + "   from the store   ?    ", MsgBoxStyle.OkCancel) = MsgBoxResult.Ok Then
 
 
                 s = s - number
@@ -228,6 +259,7 @@ Public Class item
             con.Close()
 
         End Try
+        Refresh()
 
 
     End Sub
