@@ -82,12 +82,6 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Delivery.Designer.vb">
-      <DependentUpon>Delivery.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Delivery.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="EditForm.Designer.vb">
       <DependentUpon>EditForm.vb</DependentUpon>
     </Compile>
@@ -119,12 +113,6 @@
     <Compile Include="Main.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="movEmp.Designer.vb">
-      <DependentUpon>movEmp.vb</DependentUpon>
-    </Compile>
-    <Compile Include="movEmp.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -146,12 +134,6 @@
     <Compile Include="protection.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Receipt.Designer.vb">
-      <DependentUpon>Receipt.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Receipt.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="StoresDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -159,9 +141,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Delivery.resx">
-      <DependentUpon>Delivery.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="EditForm.resx">
       <DependentUpon>EditForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -177,9 +156,6 @@
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="movEmp.resx">
-      <DependentUpon>movEmp.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
@@ -188,9 +164,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="protection.resx">
       <DependentUpon>protection.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Receipt.resx">
-      <DependentUpon>Receipt.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

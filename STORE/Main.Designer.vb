@@ -28,8 +28,6 @@ Partial Class Main
         Me.ToolStripLabel1 = New System.Windows.Forms.ToolStripLabel()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripLabel2 = New System.Windows.Forms.ToolStripLabel()
-        Me.movEm = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStripLabel3 = New System.Windows.Forms.ToolStripLabel()
         Me.BottomToolStripPanel = New System.Windows.Forms.ToolStripPanel()
         Me.TopToolStripPanel = New System.Windows.Forms.ToolStripPanel()
         Me.RightToolStripPanel = New System.Windows.Forms.ToolStripPanel()
@@ -40,7 +38,7 @@ Partial Class Main
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripLabel1, Me.ToolStripButton2, Me.ToolStripLabel2, Me.movEm, Me.ToolStripLabel3})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1, Me.ToolStripLabel1, Me.ToolStripButton2, Me.ToolStripLabel2})
         Me.ToolStrip1.Location = New System.Drawing.Point(0, 0)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional
@@ -77,21 +75,6 @@ Partial Class Main
         Me.ToolStripLabel2.Name = "ToolStripLabel2"
         Me.ToolStripLabel2.Size = New System.Drawing.Size(34, 22)
         Me.ToolStripLabel2.Text = "الذمم"
-        '
-        'movEm
-        '
-        Me.movEm.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.movEm.Image = Global.STORE.My.Resources.Resources.employees_transfer_change_employee_employer_reposition_swap_turnover_3f8213587b4876c1_256x256
-        Me.movEm.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.movEm.Name = "movEm"
-        Me.movEm.Size = New System.Drawing.Size(23, 22)
-        Me.movEm.Text = "ToolStripButton3"
-        '
-        'ToolStripLabel3
-        '
-        Me.ToolStripLabel3.Name = "ToolStripLabel3"
-        Me.ToolStripLabel3.Size = New System.Drawing.Size(52, 22)
-        Me.ToolStripLabel3.Text = "المناقلات"
         '
         'BottomToolStripPanel
         '
@@ -155,6 +138,4 @@ Partial Class Main
     Friend WithEvents RightToolStripPanel As ToolStripPanel
     Friend WithEvents LeftToolStripPanel As ToolStripPanel
     Friend WithEvents ContentPanel As ToolStripContentPanel
-    Friend WithEvents movEm As ToolStripButton
-    Friend WithEvents ToolStripLabel3 As ToolStripLabel
 End Class
